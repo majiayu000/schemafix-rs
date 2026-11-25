@@ -6,7 +6,7 @@
 原始文本 → jsonrepair-rs（语法修复）→ schema 纠正（每条记为 Fix）→ jsonschema 校验 → Outcome
 ```
 
-状态：v0.1，仅本地开发，未发布到 crates.io。
+状态：v0.1，尚未发布到 crates.io。
 
 ## 库用法
 
