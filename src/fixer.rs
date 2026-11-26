@@ -1,10 +1,10 @@
-//! Pipeline: raw text → syntax repair → schema correction → validation.
+//! Pipeline: raw text → extraction + syntax repair → schema correction → validation.
 
 use serde_json::Value;
 
-use crate::correct::Corrector;
-use crate::fix::{Fix, FixKind, JsonPointer};
-use crate::{Outcome, SchemaError, SchemaViolation};
+use crate::correct::{Branches, Corrector};
+use crate::fix::JsonPointer;
+use crate::{Outcome, SchemaError, SchemaViolation, parse};
 
 /// Options controlling which corrections are allowed.
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -29,8 +29,11 @@ impl Default for FixOptions {
 
 /// A compiled schema plus options; reusable across many inputs.
 pub struct Fixer {
-    schema: Value,
+    // Boxed so node addresses (the keys of `branches`) stay put when the
+    // Fixer moves.
+    schema: Box<Value>,
     validator: jsonschema::Validator,
+    branches: Branches,
     opts: FixOptions,
 }
 
@@ -45,9 +48,12 @@ impl Fixer {
     pub fn with_options(schema: &Value, opts: FixOptions) -> Result<Self, SchemaError> {
         let validator =
             jsonschema::validator_for(schema).map_err(|err| SchemaError(err.to_string()))?;
+        let schema = Box::new(schema.clone());
+        let branches = Branches::compile(&schema);
         Ok(Self {
-            schema: schema.clone(),
+            schema,
             validator,
+            branches,
             opts,
         })
     }
@@ -55,7 +61,10 @@ impl Fixer {
     /// Run the full pipeline on raw model output.
     pub fn fix(&self, raw: &str) -> Outcome {
         let mut fixes = Vec::new();
-        let mut value = match self.parse(raw, &mut fixes) {
+        let parsed = self
+            .check_size(raw)
+            .and_then(|()| parse::parse(raw, &mut fixes));
+        let mut value = match parsed {
             Ok(value) => value,
             Err(message) => {
                 return Outcome::Invalid {
@@ -70,42 +79,30 @@ impl Fixer {
         };
         // A value that already validates is never touched by schema corrections.
         if !self.validator.is_valid(&value) {
-            let mut corrector = Corrector::new(&self.schema, &self.opts);
+            let mut corrector = Corrector::new(&self.schema, &self.opts, &self.branches);
             corrector.correct(&mut value, &self.schema, &JsonPointer::root());
             fixes.extend(corrector.into_fixes());
+            if !self.validator.is_valid(&value) {
+                let errors = self.violations(&value);
+                return Outcome::Invalid {
+                    value: Some(value),
+                    fixes,
+                    errors,
+                };
+            }
         }
-        let errors = self.violations(&value);
-        match (errors.is_empty(), fixes.is_empty()) {
-            (true, true) => Outcome::Valid { value },
-            (true, false) => Outcome::Fixed { value, fixes },
-            (false, _) => Outcome::Invalid {
-                value: Some(value),
-                fixes,
-                errors,
-            },
+        if fixes.is_empty() {
+            Outcome::Valid { value }
+        } else {
+            Outcome::Fixed { value, fixes }
         }
     }
 
-    fn parse(&self, raw: &str, fixes: &mut Vec<Fix>) -> Result<Value, String> {
-        if let Some(limit) = self.opts.max_input_bytes
-            && raw.len() > limit
-        {
-            return Err(format!("input exceeds {limit} bytes"));
+    fn check_size(&self, raw: &str) -> Result<(), String> {
+        match self.opts.max_input_bytes {
+            Some(limit) if raw.len() > limit => Err(format!("input exceeds {limit} bytes")),
+            _ => Ok(()),
         }
-        if let Ok(value) = serde_json::from_str(raw) {
-            return Ok(value);
-        }
-        let repaired = jsonrepair_rs::jsonrepair(raw)
-            .map_err(|err| format!("output is not valid JSON and could not be repaired: {err}"))?;
-        let value = serde_json::from_str(&repaired)
-            .map_err(|err| format!("repaired output is not valid JSON: {err}"))?;
-        fixes.push(Fix::replaced(
-            &JsonPointer::root(),
-            FixKind::SyntaxRepair,
-            Value::String(raw.to_owned()),
-            Value::String(repaired),
-        ));
-        Ok(value)
     }
 
     fn violations(&self, value: &Value) -> Vec<SchemaViolation> {

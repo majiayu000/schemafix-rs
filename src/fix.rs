@@ -45,8 +45,14 @@ impl fmt::Display for JsonPointer {
 /// What kind of correction was applied.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum FixKind {
+    /// The JSON was cut out of surrounding prose or a Markdown code fence.
+    ExtractJson,
     /// The raw text was not valid JSON and was repaired by jsonrepair-rs.
     SyntaxRepair,
+    /// A string holding a JSON object/array was parsed where the schema wants one.
+    ParseStringifiedJson,
+    /// An integer was converted to its decimal string where the schema wants a string.
+    NumberToString,
     /// A numeric string was converted to a number or integer.
     StringToNumber,
     /// `"true"` / `"false"` (any ASCII case) was converted to a boolean.
@@ -57,6 +63,8 @@ pub enum FixKind {
     EnumCase,
     /// A single value was wrapped in a one-element array.
     WrapInArray,
+    /// A one-element array was replaced by its element where no array is allowed.
+    UnwrapSingleton,
     /// A missing required property was filled from its schema `default`.
     FillDefault,
     /// A property forbidden by `additionalProperties: false` was removed.
@@ -66,12 +74,16 @@ pub enum FixKind {
 impl fmt::Display for FixKind {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         let name = match self {
+            Self::ExtractJson => "extract_json",
             Self::SyntaxRepair => "syntax_repair",
+            Self::ParseStringifiedJson => "parse_stringified_json",
+            Self::NumberToString => "number_to_string",
             Self::StringToNumber => "string_to_number",
             Self::StringToBoolean => "string_to_boolean",
             Self::StringToNull => "string_to_null",
             Self::EnumCase => "enum_case",
             Self::WrapInArray => "wrap_in_array",
+            Self::UnwrapSingleton => "unwrap_singleton",
             Self::FillDefault => "fill_default",
             Self::DropAdditionalProperty => "drop_additional_property",
         };
@@ -80,8 +92,8 @@ impl fmt::Display for FixKind {
 }
 
 /// One change made to the value. `before` is `None` for inserted values,
-/// `after` is `None` for removed values. For [`FixKind::SyntaxRepair`] both
-/// hold the raw and repaired text as JSON strings.
+/// `after` is `None` for removed values. For [`FixKind::ExtractJson`] and
+/// [`FixKind::SyntaxRepair`] both hold the text before and after as JSON strings.
 #[derive(Debug, Clone, PartialEq)]
 pub struct Fix {
     pub path: JsonPointer,

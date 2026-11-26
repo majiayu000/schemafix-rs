@@ -1,9 +1,30 @@
-//! Singleton wrapping and `items` recursion.
+//! Singleton wrapping/unwrapping and `items` recursion.
 
 use serde_json::Value;
 
 use super::{Corrector, has_declared_type};
 use crate::fix::{Fix, FixKind, JsonPointer};
+
+/// `[x]` where the schema declares types but no array: use `x` itself.
+pub(super) fn unwrap_singleton(
+    c: &mut Corrector<'_>,
+    value: &mut Value,
+    types: &[&str],
+    path: &JsonPointer,
+) {
+    let single = value.as_array().is_some_and(|items| items.len() == 1);
+    if !single || types.is_empty() || types.contains(&"array") {
+        return;
+    }
+    let before = std::mem::take(value);
+    *value = before[0].clone();
+    c.record(Fix::replaced(
+        path,
+        FixKind::UnwrapSingleton,
+        before,
+        value.clone(),
+    ));
+}
 
 pub(super) fn correct(
     c: &mut Corrector<'_>,

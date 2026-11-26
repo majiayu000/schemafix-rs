@@ -74,3 +74,36 @@ fn type_list_with_string_never_converts() {
     let value = expect_invalid_untouched(run(&schema, r#"{"v": "null"}"#));
     assert_eq!(value, json!({"v": "null"}));
 }
+
+#[test]
+fn converts_integer_to_string() {
+    let (value, kinds) = expect_fixed(run(&prop(json!({"type": "string"})), r#"{"v": 10001}"#));
+    assert_eq!(value, json!({"v": "10001"}));
+    assert_eq!(kinds, [FixKind::NumberToString]);
+}
+
+#[test]
+fn keeps_float_for_string() {
+    let value = expect_invalid_untouched(run(&prop(json!({"type": "string"})), r#"{"v": 1.5}"#));
+    assert_eq!(value, json!({"v": 1.5}));
+}
+
+#[test]
+fn keeps_integer_when_number_also_allowed() {
+    let schema = prop(json!({"type": ["string", "integer"], "minimum": 5}));
+    let value = expect_invalid_untouched(run(&schema, r#"{"v": 3}"#));
+    assert_eq!(value, json!({"v": 3}));
+}
+
+#[test]
+fn converts_exact_whole_decimal_for_integer() {
+    let (value, _) = expect_fixed(run(&prop(json!({"type": "integer"})), r#"{"v": "3.0"}"#));
+    assert_eq!(value, json!({"v": 3}));
+}
+
+#[test]
+fn keeps_whole_decimal_beyond_exact_float_range() {
+    let value =
+        expect_invalid_untouched(run(&prop(json!({"type": "integer"})), r#"{"v": "1e30"}"#));
+    assert_eq!(value, json!({"v": "1e30"}));
+}

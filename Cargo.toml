@@ -5,6 +5,7 @@ edition = "2024"
 description = "Validate, repair and correct LLM structured output against a JSON Schema"
 license = "MIT OR Apache-2.0"
 publish = false
+exclude = ["bench/", "docs/"]
 
 [lib]
 name = "schemafix"

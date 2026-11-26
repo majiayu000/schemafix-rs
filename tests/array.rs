@@ -32,3 +32,18 @@ fn does_not_wrap_value_of_another_allowed_type() {
     let value = expect_invalid_untouched(run(&schema, r#""abc""#));
     assert_eq!(value, json!("abc"));
 }
+
+#[test]
+fn unwraps_singleton_array_for_scalar() {
+    let schema = json!({"type": "object", "properties": {"n": {"type": "integer"}}});
+    let (value, kinds) = expect_fixed(run(&schema, r#"{"n": ["3"]}"#));
+    assert_eq!(value, json!({"n": 3}));
+    assert_eq!(kinds, [FixKind::UnwrapSingleton, FixKind::StringToNumber]);
+}
+
+#[test]
+fn keeps_multi_element_array_for_scalar() {
+    let schema = json!({"type": "object", "properties": {"n": {"type": "integer"}}});
+    let value = expect_invalid_untouched(run(&schema, r#"{"n": [1, 2]}"#));
+    assert_eq!(value, json!({"n": [1, 2]}));
+}

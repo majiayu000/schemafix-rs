@@ -28,6 +28,7 @@ mod correct;
 mod fix;
 mod fixer;
 mod hint;
+mod parse;
 #[cfg(feature = "schemars")]
 mod typed;
 

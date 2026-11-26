@@ -11,6 +11,12 @@ pub(super) fn correct(
     types: &[&str],
     path: &JsonPointer,
 ) {
+    if let Some(text) = integer_text(value, types) {
+        let after = Value::String(text);
+        let before = std::mem::replace(value, after.clone());
+        c.record(Fix::replaced(path, FixKind::NumberToString, before, after));
+        return;
+    }
     let Some(text) = value.as_str() else {
         return;
     };
@@ -23,6 +29,15 @@ pub(super) fn correct(
     };
     let before = std::mem::replace(value, converted.clone());
     c.record(Fix::replaced(path, kind, before, converted));
+}
+
+/// An integer's decimal text when the schema accepts strings but no numbers.
+/// Floats are left alone: their original spelling (`1.50`) is already lost.
+fn integer_text(value: &Value, types: &[&str]) -> Option<String> {
+    let wants_only_string =
+        types.contains(&"string") && !types.contains(&"number") && !types.contains(&"integer");
+    let integral = value.is_i64() || value.is_u64();
+    (wants_only_string && integral).then(|| value.to_string())
 }
 
 fn convert(text: &str, types: &[&str]) -> Option<(FixKind, Value)> {
@@ -46,7 +61,19 @@ fn convert(text: &str, types: &[&str]) -> Option<(FixKind, Value)> {
     if integral || (wants_number && numeric_string_round_trips(text, &number)) {
         return Some((FixKind::StringToNumber, Value::Number(number)));
     }
+    if let Some(whole) = exact_whole_number(text, &number) {
+        return Some((FixKind::StringToNumber, Value::from(whole)));
+    }
     None
+}
+
+/// `"3.0"` / `"3e2"` as an integer, only when the decimal is exactly a whole
+/// number that f64 represents without rounding (|n| <= 2^53).
+fn exact_whole_number(text: &str, number: &Number) -> Option<i64> {
+    const MAX_EXACT: f64 = 9_007_199_254_740_992.0; // 2^53
+    let float = number.as_f64()?;
+    let whole = float.fract() == 0.0 && float.abs() <= MAX_EXACT;
+    (whole && numeric_string_round_trips(text, number)).then_some(float as i64)
 }
 
 /// Whether converting `text` to `number` loses no precision.

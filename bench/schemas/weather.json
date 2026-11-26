@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "location": {"type": "string"},
+    "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "default": "celsius"},
+    "days": {"type": "integer", "minimum": 1, "maximum": 14},
+    "include_hourly": {"type": "boolean", "default": false}
+  },
+  "required": ["location", "unit", "days", "include_hourly"],
+  "additionalProperties": false
+}

@@ -52,3 +52,29 @@ fn any_of_keeps_value_no_branch_accepts() {
     let value = expect_invalid_untouched(run(&schema, r#""maybe""#));
     assert_eq!(value, json!("maybe"));
 }
+
+#[test]
+fn all_of_applies_every_subschema() {
+    let schema = json!({"allOf": [
+        {"type": "object", "properties": {"a": {"type": "integer"}}},
+        {"properties": {"b": {"type": "boolean"}}, "required": ["b"]}
+    ]});
+    let (value, _) = expect_fixed(run(&schema, r#"{"a": "1", "b": "true"}"#));
+    assert_eq!(value, json!({"a": 1, "b": true}));
+}
+
+#[test]
+fn all_of_keeps_unconvertible_value() {
+    let schema = json!({"allOf": [{"type": "object", "properties": {"a": {"type": "integer"}}}]});
+    let value = expect_invalid_untouched(run(&schema, r#"{"a": "one"}"#));
+    assert_eq!(value, json!({"a": "one"}));
+}
+
+#[test]
+fn branch_cache_survives_moving_the_fixer() {
+    let schema = json!({"anyOf": [{"type": "boolean"}, {"type": "integer"}]});
+    let fixers = vec![schemafix::Fixer::new(&schema).unwrap()];
+    let moved = fixers.into_iter().next().unwrap();
+    let (value, _) = expect_fixed(moved.fix(r#""12""#));
+    assert_eq!(value, json!(12));
+}

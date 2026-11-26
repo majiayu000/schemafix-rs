@@ -1,0 +1,1795 @@
+{
+  "ajv_coerce": {
+    "totals": {
+      "value_cases": 1680,
+      "passed": 1170,
+      "correct": 1500,
+      "wrong_fix": 60,
+      "reject_cases": 390
+    },
+    "categories": {
+      "syntax/clean": [
+        90,
+        0,
+        90
+      ],
+      "syntax/code_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_fence": [
+        0,
+        0,
+        90
+      ],
+      "syntax/prose_inline": [
+        0,
+        0,
+        90
+      ],
+      "syntax/trailing_comma": [
+        90,
+        0,
+        90
+      ],
+      "syntax/single_quotes": [
+        90,
+        0,
+        90
+      ],
+      "syntax/unquoted_keys": [
+        90,
+        0,
+        90
+      ],
+      "syntax/python_literals": [
+        90,
+        0,
+        90
+      ],
+      "syntax/truncated": [
+        90,
+        0,
+        90
+      ],
+      "syntax/comments": [
+        90,
+        0,
+        90
+      ],
+      "schema/int_as_string": [
+        90,
+        0,
+        90
+      ],
+      "schema/bool_as_string": [
+        60,
+        0,
+        60
+      ],
+      "schema/enum_case": [
+        0,
+        0,
+        90
+      ],
+      "schema/missing_default": [
+        60,
+        0,
+        60
+      ],
+      "schema/extra_property": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_for_string": [
+        60,
+        0,
+        60
+      ],
+      "schema/combined": [
+        0,
+        0,
+        90
+      ],
+      "trap/fractional_int": [
+        90,
+        0,
+        90
+      ],
+      "trap/missing_required": [
+        90,
+        0,
+        90
+      ],
+      "trap/unfixable_type": [
+        90,
+        0,
+        90
+      ],
+      "trap/enum_unknown": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_as_string": [
+        30,
+        0,
+        30
+      ],
+      "schema/singleton_array": [
+        0,
+        0,
+        60
+      ],
+      "schema/stringified_json": [
+        0,
+        0,
+        60
+      ],
+      "trap/precision_int": [
+        0,
+        30,
+        30
+      ],
+      "trap/precision_float": [
+        0,
+        30,
+        30
+      ],
+      "schema/null_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/anyof_branch": [
+        30,
+        0,
+        30
+      ]
+    },
+    "timing": {
+      "language": "node",
+      "versions": {
+        "jsonrepair": "3.15.0",
+        "ajv": "8.20.0",
+        "node": "v22.18.0"
+      },
+      "reps": 5,
+      "calls": 10350,
+      "ops_per_sec": 103926.06777859325,
+      "mb_per_sec": 20.556074148307296,
+      "p50_us": 9.0,
+      "p99_us": 23.292,
+      "mean_us": 9.622224927536232,
+      "by_group": {
+        "syntax": {
+          "p50_us": 9.041,
+          "p99_us": 33.417
+        },
+        "schema": {
+          "p50_us": 8.667,
+          "p99_us": 21.5
+        },
+        "trap": {
+          "p50_us": 9.417,
+          "p99_us": 16.792
+        }
+      }
+    }
+  },
+  "ajv_strict": {
+    "totals": {
+      "value_cases": 1680,
+      "passed": 720,
+      "correct": 1110,
+      "wrong_fix": 0,
+      "reject_cases": 390
+    },
+    "categories": {
+      "syntax/clean": [
+        90,
+        0,
+        90
+      ],
+      "syntax/code_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_fence": [
+        0,
+        0,
+        90
+      ],
+      "syntax/prose_inline": [
+        0,
+        0,
+        90
+      ],
+      "syntax/trailing_comma": [
+        90,
+        0,
+        90
+      ],
+      "syntax/single_quotes": [
+        90,
+        0,
+        90
+      ],
+      "syntax/unquoted_keys": [
+        90,
+        0,
+        90
+      ],
+      "syntax/python_literals": [
+        90,
+        0,
+        90
+      ],
+      "syntax/truncated": [
+        90,
+        0,
+        90
+      ],
+      "syntax/comments": [
+        90,
+        0,
+        90
+      ],
+      "schema/int_as_string": [
+        0,
+        0,
+        90
+      ],
+      "schema/bool_as_string": [
+        0,
+        0,
+        60
+      ],
+      "schema/enum_case": [
+        0,
+        0,
+        90
+      ],
+      "schema/missing_default": [
+        0,
+        0,
+        60
+      ],
+      "schema/extra_property": [
+        0,
+        0,
+        90
+      ],
+      "schema/number_for_string": [
+        0,
+        0,
+        60
+      ],
+      "schema/combined": [
+        0,
+        0,
+        90
+      ],
+      "trap/fractional_int": [
+        90,
+        0,
+        90
+      ],
+      "trap/missing_required": [
+        90,
+        0,
+        90
+      ],
+      "trap/unfixable_type": [
+        90,
+        0,
+        90
+      ],
+      "trap/enum_unknown": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/singleton_array": [
+        0,
+        0,
+        60
+      ],
+      "schema/stringified_json": [
+        0,
+        0,
+        60
+      ],
+      "trap/precision_int": [
+        0,
+        0,
+        30
+      ],
+      "trap/precision_float": [
+        30,
+        0,
+        30
+      ],
+      "schema/null_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/anyof_branch": [
+        0,
+        0,
+        30
+      ]
+    },
+    "timing": {
+      "language": "node",
+      "versions": {
+        "jsonrepair": "3.15.0",
+        "ajv": "8.20.0",
+        "node": "v22.18.0"
+      },
+      "reps": 5,
+      "calls": 10350,
+      "ops_per_sec": 108510.09671772264,
+      "mb_per_sec": 21.46277292739975,
+      "p50_us": 8.708,
+      "p99_us": 22.459,
+      "mean_us": 9.215732270531403,
+      "by_group": {
+        "syntax": {
+          "p50_us": 8.833,
+          "p99_us": 26.417
+        },
+        "schema": {
+          "p50_us": 8.333,
+          "p99_us": 19.916
+        },
+        "trap": {
+          "p50_us": 9.042,
+          "p99_us": 17.375
+        }
+      }
+    }
+  },
+  "instructor": {
+    "totals": {
+      "value_cases": 1680,
+      "passed": 771,
+      "correct": 1131,
+      "wrong_fix": 30,
+      "reject_cases": 390
+    },
+    "categories": {
+      "syntax/clean": [
+        90,
+        0,
+        90
+      ],
+      "syntax/code_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_inline": [
+        90,
+        0,
+        90
+      ],
+      "syntax/trailing_comma": [
+        0,
+        0,
+        90
+      ],
+      "syntax/single_quotes": [
+        0,
+        0,
+        90
+      ],
+      "syntax/unquoted_keys": [
+        0,
+        0,
+        90
+      ],
+      "syntax/python_literals": [
+        21,
+        0,
+        90
+      ],
+      "syntax/truncated": [
+        0,
+        0,
+        90
+      ],
+      "syntax/comments": [
+        0,
+        0,
+        90
+      ],
+      "schema/int_as_string": [
+        90,
+        0,
+        90
+      ],
+      "schema/bool_as_string": [
+        60,
+        0,
+        60
+      ],
+      "schema/enum_case": [
+        0,
+        0,
+        90
+      ],
+      "schema/missing_default": [
+        60,
+        0,
+        60
+      ],
+      "schema/extra_property": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_for_string": [
+        0,
+        0,
+        60
+      ],
+      "schema/combined": [
+        0,
+        0,
+        90
+      ],
+      "trap/fractional_int": [
+        90,
+        0,
+        90
+      ],
+      "trap/missing_required": [
+        90,
+        0,
+        90
+      ],
+      "trap/unfixable_type": [
+        90,
+        0,
+        90
+      ],
+      "trap/enum_unknown": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_as_string": [
+        30,
+        0,
+        30
+      ],
+      "schema/singleton_array": [
+        0,
+        0,
+        60
+      ],
+      "schema/stringified_json": [
+        0,
+        0,
+        60
+      ],
+      "trap/precision_int": [
+        30,
+        0,
+        30
+      ],
+      "trap/precision_float": [
+        0,
+        30,
+        30
+      ],
+      "schema/null_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/anyof_branch": [
+        30,
+        0,
+        30
+      ]
+    },
+    "timing": {
+      "language": "python",
+      "versions": {
+        "instructor": "1.17.0",
+        "pydantic": "2.14.4"
+      },
+      "reps": 5,
+      "calls": 10350,
+      "ops_per_sec": 82075.99321844529,
+      "mb_per_sec": 16.23423495622578,
+      "p50_us": 12.209,
+      "p99_us": 24.334,
+      "mean_us": 12.183830628019322,
+      "by_group": {
+        "syntax": {
+          "p50_us": 13.083,
+          "p99_us": 25.0
+        },
+        "schema": {
+          "p50_us": 11.833,
+          "p99_us": 23.167
+        },
+        "trap": {
+          "p50_us": 12.125,
+          "p99_us": 19.166
+        }
+      }
+    }
+  },
+  "json_repair_plain": {
+    "totals": {
+      "value_cases": 1680,
+      "passed": 900,
+      "correct": 1290,
+      "wrong_fix": 0,
+      "reject_cases": 390
+    },
+    "categories": {
+      "syntax/clean": [
+        90,
+        0,
+        90
+      ],
+      "syntax/code_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_inline": [
+        90,
+        0,
+        90
+      ],
+      "syntax/trailing_comma": [
+        90,
+        0,
+        90
+      ],
+      "syntax/single_quotes": [
+        90,
+        0,
+        90
+      ],
+      "syntax/unquoted_keys": [
+        90,
+        0,
+        90
+      ],
+      "syntax/python_literals": [
+        90,
+        0,
+        90
+      ],
+      "syntax/truncated": [
+        90,
+        0,
+        90
+      ],
+      "syntax/comments": [
+        90,
+        0,
+        90
+      ],
+      "schema/int_as_string": [
+        0,
+        0,
+        90
+      ],
+      "schema/bool_as_string": [
+        0,
+        0,
+        60
+      ],
+      "schema/enum_case": [
+        0,
+        0,
+        90
+      ],
+      "schema/missing_default": [
+        0,
+        0,
+        60
+      ],
+      "schema/extra_property": [
+        0,
+        0,
+        90
+      ],
+      "schema/number_for_string": [
+        0,
+        0,
+        60
+      ],
+      "schema/combined": [
+        0,
+        0,
+        90
+      ],
+      "trap/fractional_int": [
+        90,
+        0,
+        90
+      ],
+      "trap/missing_required": [
+        90,
+        0,
+        90
+      ],
+      "trap/unfixable_type": [
+        90,
+        0,
+        90
+      ],
+      "trap/enum_unknown": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/singleton_array": [
+        0,
+        0,
+        60
+      ],
+      "schema/stringified_json": [
+        0,
+        0,
+        60
+      ],
+      "trap/precision_int": [
+        0,
+        0,
+        30
+      ],
+      "trap/precision_float": [
+        30,
+        0,
+        30
+      ],
+      "schema/null_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/anyof_branch": [
+        0,
+        0,
+        30
+      ]
+    },
+    "timing": {
+      "language": "python",
+      "versions": {
+        "json-repair": "0.64.9",
+        "jsonschema": "4.26.0"
+      },
+      "reps": 5,
+      "calls": 10350,
+      "ops_per_sec": 16362.481314737988,
+      "mb_per_sec": 3.236419758251721,
+      "p50_us": 43.041,
+      "p99_us": 254.084,
+      "mean_us": 61.11542502415459,
+      "by_group": {
+        "syntax": {
+          "p50_us": 71.5,
+          "p99_us": 289.625
+        },
+        "schema": {
+          "p50_us": 31.458,
+          "p99_us": 132.542
+        },
+        "trap": {
+          "p50_us": 29.709,
+          "p99_us": 113.209
+        }
+      }
+    }
+  },
+  "json_repair_salvage": {
+    "totals": {
+      "value_cases": 1680,
+      "passed": 1530,
+      "correct": 1756,
+      "wrong_fix": 164,
+      "reject_cases": 390
+    },
+    "categories": {
+      "syntax/clean": [
+        90,
+        0,
+        90
+      ],
+      "syntax/code_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_inline": [
+        90,
+        0,
+        90
+      ],
+      "syntax/trailing_comma": [
+        90,
+        0,
+        90
+      ],
+      "syntax/single_quotes": [
+        90,
+        0,
+        90
+      ],
+      "syntax/unquoted_keys": [
+        90,
+        0,
+        90
+      ],
+      "syntax/python_literals": [
+        90,
+        0,
+        90
+      ],
+      "syntax/truncated": [
+        90,
+        0,
+        90
+      ],
+      "syntax/comments": [
+        90,
+        0,
+        90
+      ],
+      "schema/int_as_string": [
+        90,
+        0,
+        90
+      ],
+      "schema/bool_as_string": [
+        60,
+        0,
+        60
+      ],
+      "schema/enum_case": [
+        0,
+        30,
+        90
+      ],
+      "schema/missing_default": [
+        60,
+        0,
+        60
+      ],
+      "schema/extra_property": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_for_string": [
+        60,
+        0,
+        60
+      ],
+      "schema/combined": [
+        0,
+        30,
+        90
+      ],
+      "trap/fractional_int": [
+        68,
+        22,
+        90
+      ],
+      "trap/missing_required": [
+        90,
+        0,
+        90
+      ],
+      "trap/unfixable_type": [
+        68,
+        22,
+        90
+      ],
+      "trap/enum_unknown": [
+        60,
+        30,
+        90
+      ],
+      "schema/number_as_string": [
+        30,
+        0,
+        30
+      ],
+      "schema/singleton_array": [
+        60,
+        0,
+        60
+      ],
+      "schema/stringified_json": [
+        60,
+        0,
+        60
+      ],
+      "trap/precision_int": [
+        30,
+        0,
+        30
+      ],
+      "trap/precision_float": [
+        0,
+        30,
+        30
+      ],
+      "schema/null_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/anyof_branch": [
+        30,
+        0,
+        30
+      ]
+    },
+    "timing": {
+      "language": "python",
+      "versions": {
+        "json-repair": "0.64.9",
+        "jsonschema": "4.26.0"
+      },
+      "reps": 5,
+      "calls": 10350,
+      "ops_per_sec": 4667.772418807733,
+      "mb_per_sec": 0.923262834814958,
+      "p50_us": 189.416,
+      "p99_us": 689.75,
+      "mean_us": 214.23495198067633,
+      "by_group": {
+        "syntax": {
+          "p50_us": 219.625,
+          "p99_us": 727.75
+        },
+        "schema": {
+          "p50_us": 184.083,
+          "p99_us": 628.875
+        },
+        "trap": {
+          "p50_us": 179.0,
+          "p99_us": 665.667
+        }
+      }
+    }
+  },
+  "json_repair_schema": {
+    "totals": {
+      "value_cases": 1680,
+      "passed": 1410,
+      "correct": 1770,
+      "wrong_fix": 30,
+      "reject_cases": 390
+    },
+    "categories": {
+      "syntax/clean": [
+        90,
+        0,
+        90
+      ],
+      "syntax/code_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_inline": [
+        90,
+        0,
+        90
+      ],
+      "syntax/trailing_comma": [
+        90,
+        0,
+        90
+      ],
+      "syntax/single_quotes": [
+        90,
+        0,
+        90
+      ],
+      "syntax/unquoted_keys": [
+        90,
+        0,
+        90
+      ],
+      "syntax/python_literals": [
+        90,
+        0,
+        90
+      ],
+      "syntax/truncated": [
+        90,
+        0,
+        90
+      ],
+      "syntax/comments": [
+        90,
+        0,
+        90
+      ],
+      "schema/int_as_string": [
+        90,
+        0,
+        90
+      ],
+      "schema/bool_as_string": [
+        60,
+        0,
+        60
+      ],
+      "schema/enum_case": [
+        0,
+        0,
+        90
+      ],
+      "schema/missing_default": [
+        0,
+        0,
+        60
+      ],
+      "schema/extra_property": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_for_string": [
+        60,
+        0,
+        60
+      ],
+      "schema/combined": [
+        0,
+        0,
+        90
+      ],
+      "trap/fractional_int": [
+        90,
+        0,
+        90
+      ],
+      "trap/missing_required": [
+        90,
+        0,
+        90
+      ],
+      "trap/unfixable_type": [
+        90,
+        0,
+        90
+      ],
+      "trap/enum_unknown": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_as_string": [
+        30,
+        0,
+        30
+      ],
+      "schema/singleton_array": [
+        60,
+        0,
+        60
+      ],
+      "schema/stringified_json": [
+        60,
+        0,
+        60
+      ],
+      "trap/precision_int": [
+        30,
+        0,
+        30
+      ],
+      "trap/precision_float": [
+        0,
+        30,
+        30
+      ],
+      "schema/null_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/anyof_branch": [
+        30,
+        0,
+        30
+      ]
+    },
+    "timing": {
+      "language": "python",
+      "versions": {
+        "json-repair": "0.64.9",
+        "jsonschema": "4.26.0"
+      },
+      "reps": 5,
+      "calls": 10350,
+      "ops_per_sec": 4531.716889505205,
+      "mb_per_sec": 0.8963517083920063,
+      "p50_us": 176.083,
+      "p99_us": 822.917,
+      "mean_us": 220.6669181642512,
+      "by_group": {
+        "syntax": {
+          "p50_us": 174.458,
+          "p99_us": 831.791
+        },
+        "schema": {
+          "p50_us": 176.0,
+          "p99_us": 774.833
+        },
+        "trap": {
+          "p50_us": 177.333,
+          "p99_us": 856.041
+        }
+      }
+    }
+  },
+  "jsonrepair_jsonschema": {
+    "totals": {
+      "value_cases": 1680,
+      "passed": 720,
+      "correct": 1110,
+      "wrong_fix": 0,
+      "reject_cases": 390
+    },
+    "categories": {
+      "syntax/clean": [
+        90,
+        0,
+        90
+      ],
+      "syntax/code_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_fence": [
+        0,
+        0,
+        90
+      ],
+      "syntax/prose_inline": [
+        0,
+        0,
+        90
+      ],
+      "syntax/trailing_comma": [
+        90,
+        0,
+        90
+      ],
+      "syntax/single_quotes": [
+        90,
+        0,
+        90
+      ],
+      "syntax/unquoted_keys": [
+        90,
+        0,
+        90
+      ],
+      "syntax/python_literals": [
+        90,
+        0,
+        90
+      ],
+      "syntax/truncated": [
+        90,
+        0,
+        90
+      ],
+      "syntax/comments": [
+        90,
+        0,
+        90
+      ],
+      "schema/int_as_string": [
+        0,
+        0,
+        90
+      ],
+      "schema/bool_as_string": [
+        0,
+        0,
+        60
+      ],
+      "schema/enum_case": [
+        0,
+        0,
+        90
+      ],
+      "schema/missing_default": [
+        0,
+        0,
+        60
+      ],
+      "schema/extra_property": [
+        0,
+        0,
+        90
+      ],
+      "schema/number_for_string": [
+        0,
+        0,
+        60
+      ],
+      "schema/combined": [
+        0,
+        0,
+        90
+      ],
+      "trap/fractional_int": [
+        90,
+        0,
+        90
+      ],
+      "trap/missing_required": [
+        90,
+        0,
+        90
+      ],
+      "trap/unfixable_type": [
+        90,
+        0,
+        90
+      ],
+      "trap/enum_unknown": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/singleton_array": [
+        0,
+        0,
+        60
+      ],
+      "schema/stringified_json": [
+        0,
+        0,
+        60
+      ],
+      "trap/precision_int": [
+        0,
+        0,
+        30
+      ],
+      "trap/precision_float": [
+        30,
+        0,
+        30
+      ],
+      "schema/null_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/anyof_branch": [
+        0,
+        0,
+        30
+      ]
+    },
+    "timing": {
+      "language": "rust",
+      "versions": {
+        "jsonrepair-rs": "0.2.7",
+        "jsonschema": "0.63.1"
+      },
+      "reps": 5,
+      "calls": 10350,
+      "ops_per_sec": 444096.71885897266,
+      "mb_per_sec": 87.8401855955277,
+      "p50_us": 2.291,
+      "p99_us": 4.5,
+      "mean_us": 2.2517617391304348,
+      "by_group": {
+        "syntax": {
+          "p50_us": 2.333,
+          "p99_us": 4.667
+        },
+        "schema": {
+          "p50_us": 2.209,
+          "p99_us": 4.375
+        },
+        "trap": {
+          "p50_us": 2.334,
+          "p99_us": 3.667
+        }
+      }
+    }
+  },
+  "rstructor_decode": {
+    "totals": {
+      "value_cases": 1680,
+      "passed": 201,
+      "correct": 591,
+      "wrong_fix": 0,
+      "reject_cases": 390
+    },
+    "categories": {
+      "syntax/clean": [
+        90,
+        0,
+        90
+      ],
+      "syntax/code_fence": [
+        0,
+        0,
+        90
+      ],
+      "syntax/prose_fence": [
+        0,
+        0,
+        90
+      ],
+      "syntax/prose_inline": [
+        0,
+        0,
+        90
+      ],
+      "syntax/trailing_comma": [
+        0,
+        0,
+        90
+      ],
+      "syntax/single_quotes": [
+        0,
+        0,
+        90
+      ],
+      "syntax/unquoted_keys": [
+        0,
+        0,
+        90
+      ],
+      "syntax/python_literals": [
+        21,
+        0,
+        90
+      ],
+      "syntax/truncated": [
+        0,
+        0,
+        90
+      ],
+      "syntax/comments": [
+        0,
+        0,
+        90
+      ],
+      "schema/int_as_string": [
+        0,
+        0,
+        90
+      ],
+      "schema/bool_as_string": [
+        0,
+        0,
+        60
+      ],
+      "schema/enum_case": [
+        0,
+        0,
+        90
+      ],
+      "schema/missing_default": [
+        0,
+        0,
+        60
+      ],
+      "schema/extra_property": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_for_string": [
+        0,
+        0,
+        60
+      ],
+      "schema/combined": [
+        0,
+        0,
+        90
+      ],
+      "trap/fractional_int": [
+        90,
+        0,
+        90
+      ],
+      "trap/missing_required": [
+        90,
+        0,
+        90
+      ],
+      "trap/unfixable_type": [
+        90,
+        0,
+        90
+      ],
+      "trap/enum_unknown": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/singleton_array": [
+        0,
+        0,
+        60
+      ],
+      "schema/stringified_json": [
+        0,
+        0,
+        60
+      ],
+      "trap/precision_int": [
+        0,
+        0,
+        30
+      ],
+      "trap/precision_float": [
+        30,
+        0,
+        30
+      ],
+      "schema/null_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/anyof_branch": [
+        0,
+        0,
+        30
+      ]
+    },
+    "timing": {
+      "language": "rust",
+      "versions": {
+        "rstructor": "0.6.0",
+        "serde_json": "1.0.154"
+      },
+      "reps": 5,
+      "calls": 10350,
+      "ops_per_sec": 957654.5513342164,
+      "mb_per_sec": 189.41944390341845,
+      "p50_us": 0.667,
+      "p99_us": 2.958,
+      "mean_us": 1.0442178743961354,
+      "by_group": {
+        "syntax": {
+          "p50_us": 0.166,
+          "p99_us": 2.959
+        },
+        "schema": {
+          "p50_us": 1.0,
+          "p99_us": 3.0
+        },
+        "trap": {
+          "p50_us": 1.042,
+          "p99_us": 2.125
+        }
+      }
+    }
+  },
+  "rstructor_mock": {
+    "totals": {
+      "value_cases": 1680,
+      "passed": 201,
+      "correct": 591,
+      "wrong_fix": 0,
+      "reject_cases": 390
+    },
+    "categories": {
+      "syntax/clean": [
+        90,
+        0,
+        90
+      ],
+      "syntax/code_fence": [
+        0,
+        0,
+        90
+      ],
+      "syntax/prose_fence": [
+        0,
+        0,
+        90
+      ],
+      "syntax/prose_inline": [
+        0,
+        0,
+        90
+      ],
+      "syntax/trailing_comma": [
+        0,
+        0,
+        90
+      ],
+      "syntax/single_quotes": [
+        0,
+        0,
+        90
+      ],
+      "syntax/unquoted_keys": [
+        0,
+        0,
+        90
+      ],
+      "syntax/python_literals": [
+        21,
+        0,
+        90
+      ],
+      "syntax/truncated": [
+        0,
+        0,
+        90
+      ],
+      "syntax/comments": [
+        0,
+        0,
+        90
+      ],
+      "schema/int_as_string": [
+        0,
+        0,
+        90
+      ],
+      "schema/bool_as_string": [
+        0,
+        0,
+        60
+      ],
+      "schema/enum_case": [
+        0,
+        0,
+        90
+      ],
+      "schema/missing_default": [
+        0,
+        0,
+        60
+      ],
+      "schema/extra_property": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_for_string": [
+        0,
+        0,
+        60
+      ],
+      "schema/combined": [
+        0,
+        0,
+        90
+      ],
+      "trap/fractional_int": [
+        90,
+        0,
+        90
+      ],
+      "trap/missing_required": [
+        90,
+        0,
+        90
+      ],
+      "trap/unfixable_type": [
+        90,
+        0,
+        90
+      ],
+      "trap/enum_unknown": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/singleton_array": [
+        0,
+        0,
+        60
+      ],
+      "schema/stringified_json": [
+        0,
+        0,
+        60
+      ],
+      "trap/precision_int": [
+        0,
+        0,
+        30
+      ],
+      "trap/precision_float": [
+        30,
+        0,
+        30
+      ],
+      "schema/null_as_string": [
+        0,
+        0,
+        30
+      ],
+      "schema/anyof_branch": [
+        0,
+        0,
+        30
+      ]
+    },
+    "timing": {
+      "language": "rust",
+      "versions": {
+        "rstructor": "0.6.0",
+        "serde_json": "1.0.154"
+      },
+      "reps": 5,
+      "calls": 10350,
+      "ops_per_sec": 69313.24596623027,
+      "mb_per_sec": 13.709825205521476,
+      "p50_us": 16.042,
+      "p99_us": 24.209,
+      "mean_us": 14.427256811594203,
+      "by_group": {
+        "syntax": {
+          "p50_us": 15.208,
+          "p99_us": 23.375
+        },
+        "schema": {
+          "p50_us": 16.458,
+          "p99_us": 24.709
+        },
+        "trap": {
+          "p50_us": 16.0,
+          "p99_us": 25.666
+        }
+      }
+    }
+  },
+  "schemafix": {
+    "totals": {
+      "value_cases": 1680,
+      "passed": 1650,
+      "correct": 2040,
+      "wrong_fix": 0,
+      "reject_cases": 390
+    },
+    "categories": {
+      "syntax/clean": [
+        90,
+        0,
+        90
+      ],
+      "syntax/code_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_fence": [
+        90,
+        0,
+        90
+      ],
+      "syntax/prose_inline": [
+        90,
+        0,
+        90
+      ],
+      "syntax/trailing_comma": [
+        90,
+        0,
+        90
+      ],
+      "syntax/single_quotes": [
+        90,
+        0,
+        90
+      ],
+      "syntax/unquoted_keys": [
+        90,
+        0,
+        90
+      ],
+      "syntax/python_literals": [
+        90,
+        0,
+        90
+      ],
+      "syntax/truncated": [
+        90,
+        0,
+        90
+      ],
+      "syntax/comments": [
+        90,
+        0,
+        90
+      ],
+      "schema/int_as_string": [
+        90,
+        0,
+        90
+      ],
+      "schema/bool_as_string": [
+        60,
+        0,
+        60
+      ],
+      "schema/enum_case": [
+        90,
+        0,
+        90
+      ],
+      "schema/missing_default": [
+        60,
+        0,
+        60
+      ],
+      "schema/extra_property": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_for_string": [
+        60,
+        0,
+        60
+      ],
+      "schema/combined": [
+        90,
+        0,
+        90
+      ],
+      "trap/fractional_int": [
+        90,
+        0,
+        90
+      ],
+      "trap/missing_required": [
+        90,
+        0,
+        90
+      ],
+      "trap/unfixable_type": [
+        90,
+        0,
+        90
+      ],
+      "trap/enum_unknown": [
+        90,
+        0,
+        90
+      ],
+      "schema/number_as_string": [
+        30,
+        0,
+        30
+      ],
+      "schema/singleton_array": [
+        60,
+        0,
+        60
+      ],
+      "schema/stringified_json": [
+        60,
+        0,
+        60
+      ],
+      "trap/precision_int": [
+        0,
+        0,
+        30
+      ],
+      "trap/precision_float": [
+        30,
+        0,
+        30
+      ],
+      "schema/null_as_string": [
+        30,
+        0,
+        30
+      ],
+      "schema/anyof_branch": [
+        30,
+        0,
+        30
+      ]
+    },
+    "timing": {
+      "language": "rust",
+      "versions": {
+        "schemafix-rs": "0.1.0",
+        "jsonrepair-rs": "0.2.7",
+        "jsonschema": "0.63.1"
+      },
+      "reps": 5,
+      "calls": 10350,
+      "ops_per_sec": 244321.53667907167,
+      "mb_per_sec": 48.325619657841735,
+      "p50_us": 3.875,
+      "p99_us": 8.875,
+      "mean_us": 4.092967053140097,
+      "by_group": {
+        "syntax": {
+          "p50_us": 2.209,
+          "p99_us": 7.458
+        },
+        "schema": {
+          "p50_us": 5.041,
+          "p99_us": 8.75
+        },
+        "trap": {
+          "p50_us": 5.625,
+          "p99_us": 9.541
+        }
+      }
+    }
+  }
+}

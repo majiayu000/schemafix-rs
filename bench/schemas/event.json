@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "Person": {
+      "type": "object",
+      "properties": {
+        "name": {"type": "string"},
+        "role": {"type": "string", "enum": ["organizer", "speaker", "attendee"]}
+      },
+      "required": ["name", "role"],
+      "additionalProperties": false
+    },
+    "Address": {
+      "type": "object",
+      "properties": {"city": {"type": "string"}, "room": {"type": "integer"}},
+      "required": ["city", "room"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "title": {"type": "string"},
+    "attendees": {"type": "array", "items": {"$ref": "#/$defs/Person"}},
+    "location": {"anyOf": [{"type": "string"}, {"$ref": "#/$defs/Address"}]},
+    "all_day": {"type": "boolean"},
+    "capacity": {"type": ["integer", "null"]}
+  },
+  "required": ["title", "attendees", "location", "all_day", "capacity"],
+  "additionalProperties": false
+}

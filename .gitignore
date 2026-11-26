@@ -1,1 +1,5 @@
 /target
+/bench/rust/target
+/bench/node/node_modules
+/bench/python/.venv
+__pycache__/

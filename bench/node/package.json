@@ -1,0 +1,10 @@
+{
+  "name": "schemafix-bench-node",
+  "private": true,
+  "description": "jsonrepair + ajv harness for bench/run.sh",
+  "type": "commonjs",
+  "dependencies": {
+    "ajv": "^8.20.0",
+    "jsonrepair": "^3.15.0"
+  }
+}

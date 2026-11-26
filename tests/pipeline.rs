@@ -29,7 +29,7 @@ fn syntax_repair_is_recorded() {
     let raw = "```json\n{city: 'Paris', days: 3,}\n```";
     let (value, kinds) = expect_fixed(run(&schema(), raw));
     assert_eq!(value, json!({"city": "Paris", "days": 3}));
-    assert_eq!(kinds, [FixKind::SyntaxRepair]);
+    assert_eq!(kinds, [FixKind::ExtractJson, FixKind::SyntaxRepair]);
 }
 
 #[test]
